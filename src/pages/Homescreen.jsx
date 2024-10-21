@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/Header";
+import Row from "../components/Row";
 import { fetchNetflixOriginals, selectNetflixOrginals } from "../features/tv/tvSlice";
 
 function Homescreen(props) {
@@ -19,6 +20,10 @@ function Homescreen(props) {
                     : status === "loading" ? <p>... loading</p>
                         : <p>Something went wrong</p>
             }
+
+            <div className="container-fluid">
+                <Row />
+            </div>
         </>
     );
 }
