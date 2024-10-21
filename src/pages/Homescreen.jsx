@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/Header";
 import Row from "../components/Row";
+import { fetchNowPlayingMovies, selectNowPlayingMovies } from "../features/movie/movieSlice";
 import { fetchNetflixOriginals, selectNetflixOrginals } from "../features/tv/tvSlice";
 
 function Homescreen(props) {
@@ -22,7 +23,9 @@ function Homescreen(props) {
             }
 
             <div className="container-fluid">
-                <Row />
+                <Row title="Now Playing" action={fetchNowPlayingMovies} selector={selectNowPlayingMovies} />
+
+                <Row title="Netflix Originals" action={fetchNetflixOriginals} selector={selectNetflixOrginals} />
             </div>
         </>
     );
