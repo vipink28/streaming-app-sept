@@ -7,9 +7,6 @@ function Ratings({ voteAverage, voteCount }) {
     // 8.5
     const voteAvg = Math.floor(voteAverage / 2);
     const voteArr = [...Array(5)];
-
-    console.log(voteArr);
-
     return (
         <div className='py-2'>
             <div className='d-flex gap-1'>
