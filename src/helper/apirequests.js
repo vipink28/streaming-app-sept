@@ -7,3 +7,18 @@ export const apirequests = {
     getDetails: (platform, id) => { return `${platform}/${id}?api_key=${API_KEY}&append_to_response=videos` }
 }
 
+
+export const platformTypes = {
+    tv: "tv",
+    movie: "movie"
+}
+
+
+export const endpoints = {
+    popular: "popular",
+    topRated: "top_rated",
+    upcoming: "upcoming",
+    nowPlaying: "now_playing",
+    onTheAir: "on_the_air",
+    airingToday: "airing_today"
+} 

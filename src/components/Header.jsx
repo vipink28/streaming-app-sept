@@ -7,14 +7,14 @@ import GenreLinks from './GenreLinks';
 import Ratings from './Ratings';
 import VideoPlayer from './VideoPlayer';
 
-function Header({ video }) {
+function Header({ video, platform }) {
     const dispatch = useDispatch();
     const { data, status, error } = useSelector(selectHeaderDetails);
     const [isVideo, setIsVideo] = useState(false);
 
     useEffect(() => {
         if (video) {
-            dispatch(fetchHeaderDetails({ platform: "tv", id: video.id }))
+            dispatch(fetchHeaderDetails({ platform: platform, id: video.id }))
         }
     }, [video])
 
@@ -50,8 +50,6 @@ function Header({ video }) {
                     : status === "loading" ?
                         <p>...Loading</p>
                         : <p>Something went wrong</p>
-
-
             }
         </div>
     );

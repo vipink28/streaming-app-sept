@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { apirequests } from "../../helper/apirequests";
+import { apirequests, endpoints, platformTypes } from "../../helper/apirequests";
 import axios from '../../helper/axios';
 const initialState = {
     nowPlaying: {
@@ -12,7 +12,7 @@ const initialState = {
 export const fetchNowPlayingMovies = createAsyncThunk(
     "movie/fetchNowPlayingMovies",
     async () => {
-        const response = await axios.get(apirequests.getCollection("movie", "now_playing"));
+        const response = await axios.get(apirequests.getCollection(platformTypes.movie, endpoints.nowPlaying));
         return response.data;
     }
 )

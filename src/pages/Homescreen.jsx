@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Row from "../components/Row";
 import { fetchNowPlayingMovies, selectNowPlayingMovies } from "../features/movie/movieSlice";
 import { fetchNetflixOriginals, selectNetflixOrginals } from "../features/tv/tvSlice";
+import { platformTypes } from "../helper/apirequests";
 
 function Homescreen(props) {
     const dispatch = useDispatch();
@@ -17,15 +18,15 @@ function Homescreen(props) {
         <>
             {
                 status === "success" ?
-                    <Header video={data.results[Math.floor(Math.random() * data.results.length)]} />
+                    <Header video={data.results[Math.floor(Math.random() * data.results.length)]} platform={platformTypes.tv} />
                     : status === "loading" ? <p>... loading</p>
                         : <p>Something went wrong</p>
             }
 
             <div className="container-fluid">
-                <Row title="Now Playing" action={fetchNowPlayingMovies} selector={selectNowPlayingMovies} />
+                <Row title="Now Playing" action={fetchNowPlayingMovies} selector={selectNowPlayingMovies} platform={platformTypes.movie} />
 
-                <Row title="Netflix Originals" action={fetchNetflixOriginals} selector={selectNetflixOrginals} />
+                <Row title="Netflix Originals" action={fetchNetflixOriginals} selector={selectNetflixOrginals} platform={platformTypes.tv} />
             </div>
         </>
     );

@@ -4,7 +4,7 @@ import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Card from './Card';
 
-function Row({ action, selector, title }) {
+function Row({ action, selector, title, platform }) {
     const dispatch = useDispatch();
     const collection = useSelector(selector);
     useEffect(() => {
@@ -23,7 +23,7 @@ function Row({ action, selector, title }) {
                         collection.data?.results.map((video) => {
                             return (
                                 <SwiperSlide key={video.id}>
-                                    <Card video={video} />
+                                    <Card video={video} platform={platform} />
                                 </SwiperSlide>
                             )
                         })
