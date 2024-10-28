@@ -14,7 +14,10 @@ function Navbar() {
                             <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">Link</Link>
+                            <Link className="nav-link" to="browse/movie">Movies</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="browse/tv">Tv Shows</Link>
                         </li>
                     </ul>
                 </div>
