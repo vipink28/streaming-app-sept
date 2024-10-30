@@ -19,6 +19,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="browse/tv">Tv Shows</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="browsebygenre/movie/28">Browse By Genre</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

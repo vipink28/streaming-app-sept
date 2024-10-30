@@ -36,7 +36,7 @@ function Header({ video, platform }) {
                                 <h3 className='tagline fs-2 text-warning'>{data.tagline}</h3>
                                 <p className='fs-5'>{truncateText(data.overview, 150)}</p>
                                 <Ratings voteAverage={data.vote_average} voteCount={data.vote_count} />
-                                <GenreLinks genres={data.genres} />
+                                <GenreLinks genres={data.genres} platform={platform} />
 
                                 <div className='mt-3 d-flex gap-2'>
                                     <button onClick={handleVideo} className='btn btn-danger'>Play</button>
