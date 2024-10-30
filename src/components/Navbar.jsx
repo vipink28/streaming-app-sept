@@ -1,6 +1,18 @@
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { searchQuery } from "../features/common/commonSlice";
 
 function Navbar() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleSearch = (e) => {
+        let { value } = e.target;
+        if (value.length > 2) {
+            dispatch(searchQuery(value));
+            navigate("/search");
+        }
+    }
+
     return (
         <nav className="navbar navbar-expand-lg fixed-top">
             <div className="container-fluid">
@@ -23,6 +35,10 @@ function Navbar() {
                             <Link className="nav-link" to="browsebygenre/movie/28">Browse By Genre</Link>
                         </li>
                     </ul>
+
+                    <div className="ms-auto">
+                        <input onChange={handleSearch} type="search" className="form-control" placeholder="Search" />
+                    </div>
                 </div>
             </div>
         </nav>

@@ -7,6 +7,7 @@ export const apirequests = {
     getDetails: (platform, id) => { return `${platform}/${id}?api_key=${API_KEY}&append_to_response=videos,recommendations,similar,credits` },
     getGenres: (platform) => { return `/genre/${platform}/list?api_key=${API_KEY}` },
     getVideosByGenre: (platform, genreid) => { return `/discover/${platform}?api_key=${API_KEY}&with_genres=${genreid}&page=1` },
+    getVideoBySearch: (platform, query) => { return `/search/${platform}?api_key=${API_KEY}&query=${query}` }
 }
 
 
