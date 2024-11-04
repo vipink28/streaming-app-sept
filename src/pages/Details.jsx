@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Card from '../components/Card';
+import Seasons from '../components/Seasons';
 import VideoPlayer from '../components/VideoPlayer';
 import { fetchVideoDetails, selectVideoDetails } from '../features/common/commonSlice';
-import { IMG_URL } from '../helper/apirequests';
+import { IMG_URL, platformTypes } from '../helper/apirequests';
 
 function Details(props) {
     const { data, status, error } = useSelector(selectVideoDetails);
@@ -51,24 +52,26 @@ function Details(props) {
                             </div>
                         </div>
                         <div className='col-lg-9'>
-                            <h4>Recommended {params.platform === "movie" ? "Movies" : "Tv Shows"}</h4>
-                            <div className='row gy-4'>
-                                {
-                                    data.recommendations.results.map((video, index) => (
-                                        index < 6 ?
-                                            <div key={video.id} className='col-lg-4'>
-                                                <Card video={video} platform={params.platform} />
-                                            </div> : ""
-                                    ))
-                                }
-                            </div>
-
-
+                            {/* Recommended  */}
+                            <>
+                                <h4>Recommended {params.platform === "movie" ? "Movies" : "Tv Shows"}</h4>
+                                <div className='row gy-4'>
+                                    {
+                                        data.recommendations.results.map((video, index) => (
+                                            index < 6 ?
+                                                <div key={video.id} className='col-lg-4'>
+                                                    <Card video={video} platform={params.platform} />
+                                                </div> : ""
+                                        ))
+                                    }
+                                </div>
+                            </>
+                            {/* writers */}
                             <div className='py-4'>
                                 <h3>Writers</h3>
                                 <div className='d-flex'>
                                     Writers: {
-                                        writers.map((writer) => (
+                                        writers?.map((writer) => (
                                             <>
                                                 <span className='ms-2' key={writer.id}>{writer.name}</span>,
                                             </>
@@ -76,6 +79,12 @@ function Details(props) {
                                     }
                                 </div>
                             </div>
+
+                            {/* seasons list */}
+                            {
+                                params.platform === platformTypes.tv &&
+                                <Seasons seasonsList={data.seasons} seriesId={data.id} />
+                            }
 
                         </div>
                     </div>
