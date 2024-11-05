@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchHeaderDetails, selectHeaderDetails } from '../features/common/commonSlice';
 import { truncateText } from '../helper';
 import { IMG_URL } from '../helper/apirequests';
@@ -40,7 +41,7 @@ function Header({ video, platform }) {
 
                                 <div className='mt-3 d-flex gap-2'>
                                     <button onClick={handleVideo} className='btn btn-danger'>Play</button>
-                                    <button className='btn btn-warning'>More Info</button>
+                                    <Link to={`/details/${platform}/${data.id}`} className='btn btn-warning'>More Info</Link>
                                 </div>
                             </div>
 

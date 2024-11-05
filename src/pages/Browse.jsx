@@ -8,9 +8,11 @@ import { fetchNetflixOriginals, selectNetflixOrginals } from '../features/tv/tvS
 import { shuffle } from '../helper';
 import { apirequests, platformTypes } from '../helper/apirequests';
 import axios from '../helper/axios';
+import { useTitle } from '../hooks/useTitle';
 
 function Browse(props) {
     const params = useParams();
+    useTitle(`Streaming App | ${params.platform.toLocaleUpperCase()}`);
     const dispatch = useDispatch();
     const [genreList, setGenreList] = useState(null);
     const { data, status, error } = useSelector(params.platform === platformTypes.tv ? selectNetflixOrginals : selectNowPlayingMovies);

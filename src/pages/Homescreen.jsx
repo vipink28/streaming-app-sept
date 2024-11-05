@@ -5,8 +5,10 @@ import Row from "../components/Row";
 import { fetchNowPlayingMovies, selectNowPlayingMovies } from "../features/movie/movieSlice";
 import { fetchNetflixOriginals, selectNetflixOrginals } from "../features/tv/tvSlice";
 import { platformTypes } from "../helper/apirequests";
+import { useTitle } from "../hooks/useTitle";
 
 function Homescreen(props) {
+    useTitle("Streaming App | Home");
     const dispatch = useDispatch();
     const { data, status, error } = useSelector(selectNetflixOrginals);
 

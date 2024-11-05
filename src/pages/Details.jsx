@@ -6,12 +6,20 @@ import Seasons from '../components/Seasons';
 import VideoPlayer from '../components/VideoPlayer';
 import { fetchVideoDetails, selectVideoDetails } from '../features/common/commonSlice';
 import { IMG_URL, platformTypes } from '../helper/apirequests';
+import useLocalStorage from '../hooks/useLocalStorage';
+import { useTitle } from '../hooks/useTitle';
 
 function Details(props) {
     const { data, status, error } = useSelector(selectVideoDetails);
     const params = useParams();
+    useTitle(`Streaming App | ${data?.name || data?.original_name || data?.title || data?.original_title}`);
     const dispatch = useDispatch();
     const [writers, setWriters] = useState(null);
+
+    const [local, setLocal] = useLocalStorage("streaming", "hello");
+    useEffect(() => {
+        setLocal("Streaming App");
+    }, [])
 
     const getWriters = (crew) => {
         const writers = crew.filter((item) => (
@@ -42,6 +50,7 @@ function Details(props) {
             <div className='py-5 mt-4'>
                 <div className='container'>
                     <div className='mb-5'>
+                        <h3>{local}</h3>
                         <VideoPlayer videos={data.videos.results} />
                     </div>
 

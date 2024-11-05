@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import { apirequests } from '../helper/apirequests';
 import axios from '../helper/axios';
+import { useTitle } from '../hooks/useTitle';
 
 function BrowseByGenre(props) {
     const params = useParams();
+    useTitle("Streaming App | Browse By Genre")
     const [videosByGenre, setVideosByGenre] = useState(null);
     const [genreList, setGenreList] = useState(null);
     const [selectedPlatform, setSelectedPlatform] = useState(null);
